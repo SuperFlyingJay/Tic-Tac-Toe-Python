@@ -7,6 +7,12 @@
 # Date Created: August 12, 2024
 # Last Modified: August 12, 2024
 
+EMPTY = "empty"
+board = [EMPTY, EMPTY, EMPTY,
+         EMPTY, EMPTY, EMPTY,
+         EMPTY, EMPTY, EMPTY
+]
+
 def draw_board():
   print("   |   |   ")
   print(" 1 | 2 | 3 ")
