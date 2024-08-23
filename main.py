@@ -5,7 +5,7 @@
 #
 # Author: I aint givin you my name
 # Date Created: August 12, 2024
-# Last Modified: August 22, 2024
+# Last Modified: August 23, 2024
 
 EMPTY = "empty"
 board = [
@@ -27,5 +27,8 @@ def draw_board(the_board):
                   print("   |   |   ")
                   if row < 2:
                            print("---+---+---")
-  
+
+print("Hello, lets play Tic Tac Toe!")
+print("I'll be X and you can be O.")
+
 draw_board(board         )
