@@ -8,6 +8,11 @@
 # Last Modified: August 26         , 2024
 
 EMPTY = "empty"
+COMPUTER = "X"
+PLAYER = "O"
+
+WHO_SHOULD_GO_FIRST_PROMPT = "Who should go first? "
+
 board = [
          EMPTY, EMPTY, EMPTY,
          EMPTY, EMPTY, EMPTY,
@@ -30,10 +35,10 @@ def draw_board(the_board):
                            print("---+---+---")
 
 print("Hello, lets play Tic Tac Toe!")
-print("I'll be X and you can be O.")
+print("I'll be {} and you can be {}.".format(COMPUTER, PLAYER))
 
-whose_turn = input("Who should go first? ").upper()
-while whose_turn != "X" and whose_turn != "O":
-         print("ERROR: Please enter X or O")
-         whose_turn = input("So who should go first? ").upper()
+whose_turn = input(WHO_SHOULD_GO_FIRST_PROMPT).upper()
+while whose_turn != COMPUTER and whose_turn != PLAYER:
+         print("ERROR: Please enter {} or {}".format(COMPUTER, PLAYER))
+         whose_turn = input(WHO_SHOULD_GO_FIRST_PROMPT).upper()
 draw_board(board)
