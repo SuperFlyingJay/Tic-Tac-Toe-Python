@@ -5,7 +5,7 @@
 #
 # Author: I aint givin you my name
 # Date Created: August 12, 2024
-# Last Modified: August 23, 2024
+# Last Modified: August 26         , 2024
 
 EMPTY = "empty"
 board = [
@@ -18,6 +18,7 @@ def get_symbol(the_board, square_number):
          symbol = the_board[square_number - 1]
          if symbol == EMPTY:
                   return square_number
+                  
          return symbol
                   
 def draw_board(the_board):
@@ -32,5 +33,7 @@ print("Hello, lets play Tic Tac Toe!")
 print("I'll be X and you can be O.")
 
 whose_turn = input("Who should go first? ").upper()
-
+while whose_turn != "X" and whose_turn != "O":
+         print("ERROR: Please enter X or O")
+         whose_turn = input("So who should go first? ").upper()
 draw_board(board)
