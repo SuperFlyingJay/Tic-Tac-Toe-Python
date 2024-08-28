@@ -5,7 +5,7 @@
 #
 # Author: I aint givin you my name
 # Date Created: August 12, 2024
-# Last Modified: August 26         , 2024
+# Last Modified: August 28, 2024
 
 EMPTY = "empty"
 COMPUTER = "X"
@@ -34,11 +34,17 @@ def draw_board(the_board):
                   if row < 2:
                            print("---+---+---")
 
-print("Hello, lets play Tic Tac Toe!")
-print("I'll be {} and you can be {}.".format(COMPUTER, PLAYER))
+def greet_player():
+         print("Hello, lets play Tic Tac Toe!")
+         print("I'll be {} and you can be {}.".format(COMPUTER, PLAYER))
 
-whose_turn = input(WHO_SHOULD_GO_FIRST_PROMPT).upper()
-while whose_turn != COMPUTER and whose_turn != PLAYER:
-         print("ERROR: Please enter {} or {}".format(COMPUTER, PLAYER))
-         whose_turn = input(WHO_SHOULD_GO_FIRST_PROMPT).upper()
+         choice = input(WHO_SHOULD_GO_FIRST_PROMPT).upper()
+         while choice != COMPUTER and choice != PLAYER:
+                  print("ERROR: Please enter {} or {}".format(COMPUTER, PLAYER))
+                  choice = input(WHO_SHOULD_GO_FIRST_PROMPT).upper()
+         return choice
+
+whose_turn = greet_player()
 draw_board(board)
+
+print ("It's player {}'s turn.".format(whose_turn))
