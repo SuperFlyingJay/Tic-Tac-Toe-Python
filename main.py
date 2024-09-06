@@ -7,6 +7,10 @@
 # Date Created: August 12, 2024
 # Last Modified: August 28, 2024
 
+import random
+import time
+
+
 EMPTY = "empty"
 COMPUTER = "X"
 PLAYER = "O"
@@ -63,9 +67,23 @@ def get_player_choice(the_board):
                                     valid_choice = True
          return choice
 
+def get_computer_choice(the_board):
+         print("It's my turn.")
+         time.sleep(random.randint(25, 75)/100.0)
+         choice = random.randint(1, 9)
+         while the_board[choice - 1] != EMPTY:
+                  time.sleep(random.randint(25, 50)/100.0)
+                  choice = random.randint(1, 9)
+         
+         return choice
 
+
+random.seed()
 whose_turn = greet_player()
 draw_board(board)
 
-player_choice = get_player_choice(board)       
-print("You chose square {}.".format(player_choice))
+#player_choice = get_player_choice(board)       
+#print("You chose square {}.".format(player_choice))
+
+computer_choice = get_computer_choice(board)
+print ("I chose {}".format(computer_choice))
