@@ -5,7 +5,7 @@
 #
 # Author: I aint givin you my name
 # Date Created: August 12, 2024
-# Last Modified: August 28, 2024
+# Last Modified: September 10, 2024
 
 import random
 import time
@@ -82,8 +82,15 @@ random.seed()
 whose_turn = greet_player()
 draw_board(board)
 
-#player_choice = get_player_choice(board)       
-#print("You chose square {}.".format(player_choice))
-
-computer_choice = get_computer_choice(board)
-print ("I chose {}".format(computer_choice))
+winner = None
+while  winner == None:
+         if whose_turn == PLAYER:
+                  player_choice = get_player_choice(board)
+                  board[player_choice - 1] = PLAYER
+                  whose_turn = COMPUTER
+         else:
+                  computer_choice = get_computer_choice(board)
+                  board[computer_choice - 1] = COMPUTER
+                  whose_turn = PLAYER
+                  
+         draw_board(board)
