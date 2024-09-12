@@ -110,23 +110,25 @@ def report_winner(the_winner):
          else:
                   print("Looks like it's a tie!")
          
-# Main Program Code
-random.seed()
-whose_turn = greet_player()
-draw_board(board)
-
-winner = None
-while  winner == None:
-         if whose_turn == PLAYER:
-                  player_choice = get_player_choice(board)
-                  board[player_choice - 1] = PLAYER
-                  whose_turn = COMPUTER
-         else:
-                  computer_choice = get_computer_choice(board)
-                  board[computer_choice - 1] = COMPUTER
-                  whose_turn = PLAYER
-                  
+def play_game():
+         random.seed()
+         whose_turn = greet_player()
          draw_board(board)
-         winner = check_for_winner(board)
+         
+         winner = None
+         while  winner == None:
+                  if whose_turn == PLAYER:
+                           player_choice = get_player_choice(board)
+                           board[player_choice - 1] = PLAYER
+                           whose_turn = COMPUTER
+                  else:
+                           computer_choice = get_computer_choice(board)
+                           board[computer_choice - 1] = COMPUTER
+                           whose_turn = PLAYER
+                           
+                  draw_board(board)
+                  winner = check_for_winner(board)
+         
+         report_winner(winner)
 
-report_winner(winner)
+play_game()
