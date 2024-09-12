@@ -5,7 +5,7 @@
 #
 # Author: I aint givin you my name
 # Date Created: August 12, 2024
-# Last Modified: September 11, 2024
+# Last Modified: September 12, 2024
 
 import random
 from sre_constants import CATEGORY
@@ -102,6 +102,14 @@ def check_for_winner(the_board):
 
          return None
 
+def report_winner(the_winner):
+         if the_winner == PLAYER:
+                  print("Looks like you won!")
+         elif the_winner == COMPUTER:
+                  print("Looks like I won!")
+         else:
+                  print("Looks like it's a tie!")
+         
 # Main Program Code
 random.seed()
 whose_turn = greet_player()
@@ -121,4 +129,4 @@ while  winner == None:
          draw_board(board)
          winner = check_for_winner(board)
 
-print ("The game is over.")
+report_winner(winner)
