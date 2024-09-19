@@ -5,7 +5,7 @@
 #
 # Author: I aint givin you my name
 # Date Created: August 12, 2024
-# Last Modified: September 12, 2024
+# Last Modified: September 19, 2024
 
 import random
 from sre_constants import CATEGORY
@@ -79,14 +79,31 @@ def get_player_choice(the_board):
                                     valid_choice = True
          return choice
 
+def can_win(the_board, symbol):
+         for combination in WINNING_COMBINATIONS:
+                  first_symbol = the_board[combination[0] - 1]
+                  second_symbol = the_board[combination[1] - 1]
+                  third_symbol = the_board[combination[2] - 1]
+                  if first_symbol == symbol and second_symbol == symbol and third_symbol == EMPTY:
+                           return combination[2]
+                  elif first_symbol == symbol and third_symbol == symbol and second_symbol == EMPTY:
+                           return combination[1]
+                  elif second_symbol == symbol and third_symbol == symbol and first_symbol == EMPTY:
+                           return combination[0]
+
+         return None
 def get_computer_choice(the_board):
          print("It's my turn.")
          time.sleep(random.randint(25, 75)/100.0)
-         choice = random.randint(1, 9)
-         while the_board[choice - 1] != EMPTY:
-                  time.sleep(random.randint(25, 50)/100.0)
+         choice = can_win(the_board, COMPUTER)
+         if choice == None:
+                  choice = can_win(the_board, PLAYER)
+         if choice == None:
                   choice = random.randint(1, 9)
-         
+                  while the_board[choice - 1] != EMPTY:
+                           time.sleep(random.randint(25, 50)/100.0)
+                           choice = random.randint(1, 9)
+                  
          return choice
 
 def check_for_winner(the_board):
